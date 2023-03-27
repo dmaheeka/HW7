@@ -1,0 +1,42 @@
+---
+title: "HW7Updated"
+output: html_document
+date: "2023-03-27"
+---
+
+```{r}
+library(naniar)
+library(ggplot2)
+library(tidyverse)
+HAPPY <- readRDS("C:/Users/mahee/Downloads/HAPPY.rds")
+
+data = HAPPY
+head(data)
+
+data[data == "IAP"] <- NA
+data[data == "NA"] <- NA
+data[data == "DK"] <- NA
+
+str(data)
+
+data$HAPPY <- as.factor(data$HAPPY)
+data$SEX <- as.factor(data$SEX)
+data$MARITAL<- as.factor(data$MARITAL)
+data$DEGREE<- as.factor(data$DEGREE)
+data$FINRELA<- as.factor(data$FINRELA)
+data$HEALTH<- as.factor(data$HEALTH)
+data$PARTYID<- as.factor(data$PARTYID)
+
+data[data=="89 OR OLDER"] <- "89"
+data$AGE <- as.integer(data$AGE)
+
+#MAHEEKA'S QUESTION: DOES HAPPINESS AFFECT GENDERS DIFFERENTLY BASED ON MARITAL STATUS?
+
+ggplot(data, aes(x = HAPPY, fill = SEX)) +
+  geom_bar(position = "dodge") +
+  scale_fill_manual(values = c("magenta", "royalblue")) +
+  facet_grid(cols = vars(MARITAL)) +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 90))
+
+#DESCRIPTION: based on marital status, the count of people who are most happy are married. Among them women were happier than men(pretty or very happy). Those who filled up the category of not being too happy but were married had an equal distribution in men and women. It was also surprising to note that there were quite a few people who were pretty happy even though they were never married. In terms of divorce, the highest count of men and women who were divorced were pretty happy. in the widowed category, there were a lot more women than men and majority were pretty happy. In conclusion, the highest number of men and women who were happy are those that were married.
+```
