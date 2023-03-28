@@ -4,6 +4,8 @@ output: html_document
 date: "2023-03-27"
 ---
 
+#TEAM MEMBERS: TESS KERN, LEAH GREINER, MAHEEKA DEVARAKONDA
+
 ```{r}
 library(naniar)
 library(ggplot2)
