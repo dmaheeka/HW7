@@ -40,11 +40,12 @@ ggplot(data, aes(x = HAPPY, fill = SEX)) +
 
 #DESCRIPTION: based on marital status, the count of people who are most happy are married. Among them women were happier than men(pretty or very happy). Those who filled up the category of not being too happy but were married had an equal distribution in men and women. It was also surprising to note that there were quite a few people who were pretty happy even though they were never married. In terms of divorce, the highest count of men and women who were divorced were pretty happy. in the widowed category, there were a lot more women than men and majority were pretty happy. In conclusion, the highest number of men and women who were happy are those that were married.
 ```
-
-##How does degree and year effect happiness? 
+#LEah: How does degree effect happiness? 
 ```{r}
-ggplot(data, aes(x = HAPPY, fill = year)) +
-  geom_bar(position = "dodge") +
-  facet_grid(cols = vars(degree)) +
-  theme(legend.position = "none", axis.text.x = element_text(angle = 90))
+HAPPY %>% ggplot(aes(x = DEGREE, fill = HAPPY)) + 
+  geom_bar(aes(weight = YEAR), position = "dodge") + coord_flip()
 ```
+#Happiness can best be seen at the high school level. 
+
+
+
